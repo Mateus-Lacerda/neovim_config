@@ -222,6 +222,7 @@
             },
           },
         },
+        -- Python LSPs
         pylsp = {
             settings = {
                 python = {
@@ -237,9 +238,24 @@
                     }
                 }
             }
-        }
+        },
+    -- Rust LSP
+        rust_analyzer = {
+            settings = {
+                ['rust-analyzer'] = {
+                    checkOnSave = {
+                        command = 'clippy'
+                    },
+                    cargo = {
+                        loadOutDirsFromCheck = true
+                    },
+                    procMacro = {
+                        enable = true
+                    }
+                }
+            }
+        },
     }
-
       -- Ensure the servers and tools above are installed
       --
       -- To check the current status of installed tools and/or manually install
