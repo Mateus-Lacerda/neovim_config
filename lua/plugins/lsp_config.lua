@@ -255,6 +255,27 @@
                 }
             }
         },
+    -- C LSP 
+        clangd = {
+            cmd = { 'clangd', '--background-index', '--clang-tidy', '--query-driver=/opt/cuda/bin/nvcc' },
+            capabilities = {
+                offsetEncoding = { 'utf-8' },
+                textDocument = {
+                    codeAction = {
+                        codeActionLiteralSupport = {
+                            codeActionKind = {
+                                valueSet = { 'quickfix', 'refactor', 'source.organizeImports' },
+                            },
+                        },
+                    },
+                },
+            },
+            init_options = {
+                clangdFileStatus = true,
+                usePlaceholders = true,
+                completeUnimported = true,
+            },
+        },
     }
       -- Ensure the servers and tools above are installed
       --
