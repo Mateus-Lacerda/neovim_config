@@ -21,8 +21,20 @@ vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
 vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
 
 -- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
+
+-- Quickfix
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<M-o>", "<cmd>copen<CR>")
+vim.keymap.set("n", "<M-c>", "<cmd>cclose<CR>")
+
+-- Disable Arrow Keys in Normal Mode --
+vim.keymap.set("n", "<Up>", "<Nop>")
+vim.keymap.set("n", "<Down>", "<Nop>")
+vim.keymap.set("n", "<Left>", "<Nop>")
+vim.keymap.set("n", "<Right>", "<Nop>")
 
 -- COPILOT --
 -- Enable Copilot
