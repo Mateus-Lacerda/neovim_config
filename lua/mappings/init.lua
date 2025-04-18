@@ -1,5 +1,7 @@
 --- TELESCOPE ---
-local builtin = require('telescope.builtin')
+local builtin = require("telescope.builtin")
+
+vim.api.nvim_set_keymap("n", "<leader>fp", "<cmd>lua INSERT_FILENAME()<CR>", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
@@ -46,4 +48,16 @@ end)
 vim.keymap.set("n", "<leader>cpd", function ()
     vim.g.copilot_enabled = false
     print("Copilot disabled")
+end)
+-- Open Copilot Chat
+vim.keymap.set("n", "<leader>cpc", function ()
+    vim.cmd("CopilotChatOpen")
+end)
+-- View avaialable models
+vim.keymap.set("n", "<leader>cpm", function ()
+    vim.cmd("CopilotChatModels")
+end)
+-- View avaialable agents
+vim.keymap.set("n", "<leader>cpa", function ()
+    vim.cmd("CopilotChatAgents")
 end)
