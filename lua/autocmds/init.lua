@@ -9,3 +9,6 @@ vim.cmd[[colorscheme tokyonight-night]]
 
 -- Disable copilot by default
 vim.cmd("Copilot disable")
+
+-- Fold method
+vim.cmd("set foldmethod=manual")
