@@ -49,6 +49,12 @@ vim.keymap.set("n", "<leader>cpd", function ()
     vim.g.copilot_enabled = false
     print("Copilot disabled")
 end)
+-- Remap Copilot accept to <S-Tab>
+vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("\\<CR>")', {
+     expr = true,
+     replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
 -- Open Copilot Chat
 vim.keymap.set("n", "<leader>cpc", function ()
     vim.cmd("CopilotChatOpen")
