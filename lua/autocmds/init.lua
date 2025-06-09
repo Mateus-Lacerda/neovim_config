@@ -14,7 +14,7 @@ vim.cmd("Copilot disable")
 vim.cmd("set foldmethod=manual")
 
 -- init.lua
-vim.o.updatetime = 250
+vim.o.updatetime = 150
 
  -- Mantém o tempo pra disparar o CursorHold
 local function is_hover_window_open()

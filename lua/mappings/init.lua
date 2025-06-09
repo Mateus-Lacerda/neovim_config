@@ -67,3 +67,9 @@ end)
 vim.keymap.set("n", "<leader>cpa", function ()
     vim.cmd("CopilotChatAgents")
 end)
+
+local sysrun = require("util.run_selecion")
+
+vim.keymap.set("x", "<leader>rb", sysrun.run_bash,   { desc = "Run selected Bash" })
+vim.keymap.set("x", "<leader>rp", sysrun.run_python, { desc = "Run selected Python" })
+
