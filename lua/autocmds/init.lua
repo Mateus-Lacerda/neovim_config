@@ -4,11 +4,11 @@ vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 
--- My line numbers preferences
-vim.cmd[[colorscheme tokyonight-night]]
+-- Colorscheme
+vim.cmd[[colorscheme kanagawa]]
 
--- Disable copilot by default
-vim.cmd("Copilot disable")
+-- -- Disable copilot by default
+-- vim.cmd("Copilot disable")
 
 -- Fold method
 vim.cmd("set foldmethod=manual")

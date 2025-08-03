@@ -38,38 +38,31 @@ vim.keymap.set("n", "<Down>", "<Nop>")
 vim.keymap.set("n", "<Left>", "<Nop>")
 vim.keymap.set("n", "<Right>", "<Nop>")
 
--- COPILOT --
--- Enable Copilot
-vim.keymap.set("n", "<leader>cpe", function ()
-    vim.g.copilot_enabled = true
-    print("Copilot enabled")
-end)
--- Disable Copilot
-vim.keymap.set("n", "<leader>cpd", function ()
-    vim.g.copilot_enabled = false
-    print("Copilot disabled")
-end)
--- Remap Copilot accept to <S-Tab>
-vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("\\<CR>")', {
-     expr = true,
-     replace_keycodes = false
-})
-vim.g.copilot_no_tab_map = true
--- Open Copilot Chat
-vim.keymap.set("n", "<leader>cpc", function ()
-    vim.cmd("CopilotChatOpen")
-end)
--- View avaialable models
-vim.keymap.set("n", "<leader>cpm", function ()
-    vim.cmd("CopilotChatModels")
-end)
--- View avaialable agents
-vim.keymap.set("n", "<leader>cpa", function ()
-    vim.cmd("CopilotChatAgents")
-end)
+-- -- COPILOT --
+-- -- Enable Copilot
+-- vim.keymap.set("n", "<leader>cpe", function ()
+--     vim.cmd("Copilot enable")
+--     print("Copilot enabled")
+-- end)
+--
+-- -- Disable Copilot
+-- vim.keymap.set("n", "<leader>cpd", function ()
+--     vim.cmd("Copilot disable")
+--     print("Copilot disabled")
+-- end)
+-- -- Remap Copilot accept to <S-Tab>
+-- vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("\\<CR>")', {
+--      expr = true,
+--      replace_keycodes = false
+-- })
+-- vim.g.copilot_no_tab_map = true
 
 local sysrun = require("util.run_selecion")
 
 vim.keymap.set("x", "<leader>rb", sysrun.run_bash,   { desc = "Run selected Bash" })
 vim.keymap.set("x", "<leader>rp", sysrun.run_python, { desc = "Run selected Python" })
 
+
+-- 
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
