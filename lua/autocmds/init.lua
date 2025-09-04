@@ -5,7 +5,7 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 
 -- Colorscheme
-vim.cmd[[colorscheme kanagawa]]
+vim.cmd[[colorscheme gruvbox]]
 
 -- -- Disable copilot by default
 -- vim.cmd("Copilot disable")

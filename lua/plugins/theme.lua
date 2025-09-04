@@ -1,5 +1,5 @@
 return {
-    "rebelot/kanagawa.nvim",
+    "ellisonleao/gruvbox.nvim",
     lazy = false,
     priority = 1000,
     opts = {},

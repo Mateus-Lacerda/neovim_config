@@ -169,33 +169,16 @@
           },
         },
         -- Python LSPs
-        pylsp = {
-            capabilities = {
-                offsetEncoding = { 'utf-8' },
-                textDocument = {
-                    codeAction = {
-                        codeActionLiteralSupport = {
-                            codeActionKind = {
-                                valueSet = { 'quickfix', 'refactor', 'source.organizeImports' },
-                            },
-                        },
+        pyright = {
+            settings = {
+                python = {
+                    analysis = {
+                        autoSearchPaths = true,
+                        diagnosticMode = 'workspace',
+                        useLibraryCodeForTypes = true,
                     },
                 },
             },
-            settings = {
-                python = {
-                    plugins = {
-                        pyflakes = { enabled = true },
-                        pycodestyle = { enabled = true },
-                        autopep8 = { enabled = true },
-                        yapf = { enabled = true },
-                        mccabe = { enabled = true },
-                        pylsp_mypy = { enabled = true },
-                        pylsp_black = { enabled = true },
-                        pylsp_isort = { enabled = true }
-                    }
-                }
-            }
         },
     -- Rust LSP
         rust_analyzer = {
