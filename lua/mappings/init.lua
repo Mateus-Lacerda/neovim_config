@@ -27,8 +27,8 @@ vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
 
 -- Quickfix
-vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
-vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<M-l>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<M-h>", "<cmd>cprev<CR>")
 vim.keymap.set("n", "<M-o>", "<cmd>copen<CR>")
 vim.keymap.set("n", "<M-c>", "<cmd>cclose<CR>")
 
@@ -68,5 +68,15 @@ vim.keymap.set("x", "<leader>rp", sysrun.run_python, { desc = "Run selected Pyth
 
 
 -- 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
+vim.keymap.set("n", "<A-J>", ":t.<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<A-K>", ":t-1<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
+vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
+vim.keymap.set("i", "<A-J>", "<C-o>:t.<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<A-K>", "<C-o>:t-1<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<A-J>", ":t-1<CR>gv", { noremap = true, silent = true })
+vim.keymap.set("v", "<A-K>", ":t'><CR>gv", { noremap = true, silent = true })

@@ -7,7 +7,7 @@ return {
     },
     opts = {
         defaults = {
-            file_ignore_patterns = { '.git/', 'node_modules/', '.venv/' },
+            file_ignore_patterns = { '.git/', 'node%_modules/', '.venv/' },
         },
         pickers = {
             find_files = {
