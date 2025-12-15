@@ -80,3 +80,7 @@ vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "<A-J>", ":t-1<CR>gv", { noremap = true, silent = true })
 vim.keymap.set("v", "<A-K>", ":t'><CR>gv", { noremap = true, silent = true })
+
+
+-- Oil
+vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open parent directory" })

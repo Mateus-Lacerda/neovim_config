@@ -14,7 +14,6 @@ return {
 
         -- Allows extra capabilities provided by nvim-cmp
         'hrsh7th/cmp-nvim-lsp',
-        {'nvim-java/nvim-java'},
     },
     config = function()
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -154,15 +153,7 @@ return {
             },
             -- Python LSPs
             pyright = {
-                settings = {
-                    python = {
-                        analysis = {
-                            autoSearchPaths = true,
-                            diagnosticMode = 'workspace',
-                            useLibraryCodeForTypes = true,
-                        },
-                    },
-                },
+                settings = {}
             },
             -- Rust LSP
             rust_analyzer = {
