@@ -40,26 +40,20 @@ vim.keymap.set("n", "<Right>", "<Nop>")
 
 -- -- COPILOT --
 -- -- Enable Copilot
--- vim.keymap.set("n", "<leader>cpe", function ()
---     vim.cmd("Copilot enable")
---     print("Copilot enabled")
--- end)
---
--- -- Disable Copilot
--- vim.keymap.set("n", "<leader>cpd", function ()
---     vim.cmd("Copilot disable")
---     print("Copilot disabled")
--- end)
--- -- Remap Copilot accept to <S-Tab>
--- vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("\\<CR>")', {
---      expr = true,
---      replace_keycodes = false
--- })
--- vim.g.copilot_no_tab_map = true
+vim.keymap.set("n", "<leader>cpe", function ()
+    vim.cmd("Copilot enable")
+    print("Copilot enabled")
+end)
+
+-- Disable Copilot
+vim.keymap.set("n", "<leader>cpd", function ()
+    vim.cmd("Copilot disable")
+    print("Copilot disabled")
+end)
 
 -- Augment
-vim.keymap.set("n", "<leader>aud", function() vim.g.augment_disable_completions = true end)
-vim.keymap.set("n", "<leader>aue", function() vim.g.augment_disable_completions = false end)
+-- vim.keymap.set("n", "<leader>aud", function() vim.g.augment_disable_completions = true end)
+-- vim.keymap.set("n", "<leader>aue", function() vim.g.augment_disable_completions = false end)
 
 
 -- 

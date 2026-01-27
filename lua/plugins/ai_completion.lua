@@ -1,2 +1,3 @@
-return { 'augmentcode/augment.vim' }
-
+return {
+    "github/copilot.vim",
+}

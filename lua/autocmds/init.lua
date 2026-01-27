@@ -5,7 +5,8 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 
 -- Colorscheme
-vim.cmd [[colorscheme tokyonight-night]]
+require("catppuccin").setup({ transparent_background = true })
+vim.cmd [[colorscheme catppuccin]]
 
 -- -- Disable copilot by default
 -- vim.cmd("Copilot disable")
@@ -69,3 +70,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
 })
+
+
+-- Desabilita o copilot
+vim.cmd("Copilot disable")
