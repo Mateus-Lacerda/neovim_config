@@ -73,4 +73,4 @@ vim.api.nvim_create_autocmd("FileType", {
 
 
 -- Desabilita o copilot
-vim.cmd("Copilot disable")
+-- vim.cmd("Copilot disable")
