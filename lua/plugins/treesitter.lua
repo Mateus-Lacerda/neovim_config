@@ -5,23 +5,37 @@ return {
         build = ":TSUpdate",
         lazy = false,
         config = function()
-            -- Na main, o 'setup' pode não existir mais no mesmo lugar ou estar quebrado.
-            -- Vamos usar a API de instalação e configuração diretamente.
-
             local install = require("nvim-treesitter.install")
+            install.prefer_git = true
 
-            -- Configuração de Auto Install (o que você queria da master)
-            install.prefer_git = true -- Geralmente melhor no Arch/macOS
+            -- Lista de filetypes que NÃO devem carregar Treesitter
+            local skip_filetypes = {
+                "oil",
+                "oilpreview",
+                "fidget",
+                "lazy",
+                "mason",
+                "notify",
+                "prompt",
+                "TelescopePrompt",
+                "NvimTree",
+            }
 
-            -- Emulação do auto_install da master
-            -- A branch main está movendo isso para o core do Neovim,
-            -- mas você pode forçar o comportamento aqui:
+            local function should_skip(ft)
+                for _, skip in ipairs(skip_filetypes) do
+                    if ft == skip then return true end
+                end
+                return false
+            end
+
+            -- 1. Auto Install (apenas para arquivos reais)
             vim.api.nvim_create_autocmd("FileType", {
                 callback = function(args)
-                    local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype) or vim.bo[args.buf]
-                    .filetype
+                    local ft = vim.bo[args.buf].filetype
+                    if should_skip(ft) or ft == "" then return end
+
+                    local lang = vim.treesitter.language.get_lang(ft) or ft
                     if lang then
-                        -- Verifica se o parser já está instalado, se não, instala.
                         local is_installed = #vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", false) > 0
                         if not is_installed then
                             vim.cmd("TSInstall " .. lang)
@@ -30,12 +44,18 @@ return {
                 end,
             })
 
-            -- Habilitar Highlighting "na mão" já que o módulo de config sumiu
+            -- 2. Habilitar Highlighting (com filtros de performance e utilitários)
             vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
                 callback = function()
-                    local lang = vim.bo.filetype
-                    -- Só tenta habilitar se houver um parser instalado para a linguagem
-                    local has_parser = pcall(vim.treesitter.get_parser, 0, lang)
+                    local ft = vim.bo.filetype
+
+                    -- Não tenta carregar se estiver na blacklist ou for um buffer inválido
+                    if should_skip(ft) or ft == "" or vim.bo.buftype ~= "" then
+                        return
+                    end
+
+                    -- Só tenta habilitar se houver um parser instalado
+                    local has_parser = pcall(vim.treesitter.get_parser, 0, ft)
                     if has_parser then
                         vim.treesitter.start()
                     end

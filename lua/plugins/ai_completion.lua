@@ -19,22 +19,18 @@ return {
                         },
                     },
                 },
-                -- Configuração do Ghost Text
                 virtualtext = {
-                    auto_trigger_ft = { '*' },
+                    auto_trigger_ft = {},
                     keymap = {
                         accept = '<C-y>',
                         dismiss = '<C-;>',
-                        -- next = '<C-]>',
-                        -- prev = '<C-[>',
                     },
-                    -- Dá um respiro para o Ollama carregar
                     request_timeout = 5000,
                 },
-                -- Delay para não disparar a cada letra que você digita
                 throttle = 900,
                 debounce = 600,
             })
+            vim.keymap.set('n', '<leader>ai', '<cmd>Minuet virtualtext toggle<cr>', { desc = 'Toggle Minuet AI' })
         end,
     },
 }

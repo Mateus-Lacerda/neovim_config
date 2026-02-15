@@ -1,3 +1,5 @@
+local gopls_mod = require("lsp.gopls")
+
 -- Função auxiliar para verificar se o projeto usa 'ty'
 local function should_use_ty()
     -- Encontra o pyproject.toml na raiz do projeto (busca recursiva para cima)
@@ -37,5 +39,13 @@ else
     table.insert(lsp_servers, "pyright")
 end
 
--- Habilita a lista final
-vim.lsp.enable(lsp_servers)
+vim.lsp.config("gopls", {
+    settings = {
+        gopls = {
+            buildFlags = {}
+        }
+    }
+})
+
+-- Keymap global ou para Go
+vim.keymap.set("n", "<leader>gb", gopls_mod.pick_build_flags, { desc = "Telescope: Go Build Flags" })

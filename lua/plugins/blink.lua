@@ -11,7 +11,8 @@ return {
         sources = {
             default = { 'lsp', 'path', 'snippets', 'buffer' },
         },
-        completion = { documentation = { auto_show = true } }
+        completion = { documentation = { auto_show = true } },
+        snippets = { preset = 'default' }
     },
     opts_extend = { "sources.default" }
 }
