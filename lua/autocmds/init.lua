@@ -4,10 +4,6 @@ vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 
--- Colorscheme
-require("catppuccin").setup({ transparent_background = true })
-vim.cmd [[colorscheme catppuccin]]
-
 -- -- Disable copilot by default
 -- vim.cmd("Copilot disable")
 

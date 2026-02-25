@@ -19,6 +19,8 @@ return {
                 "prompt",
                 "TelescopePrompt",
                 "NvimTree",
+                "conf",
+                "TelescopeResults"
             }
 
             local function should_skip(ft)
