@@ -59,3 +59,8 @@ vim.keymap.set("v", "<A-K>", ":t'><CR>gv", { noremap = true, silent = true })
 
 -- Oil
 vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+
+-- Better indentation
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })

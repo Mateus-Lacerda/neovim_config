@@ -67,6 +67,43 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- Allows deleting items from Quickfix with 'dd'
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "qf",
+	callback = function()
+		local function remove_qf_item()
+			local qf_list = vim.fn.getqflist()
+			-- O quickfix pode ser uma lista de erros ou location list.
+			-- Aqui focamos na quickfix list global.
 
--- Desabilita o copilot
--- vim.cmd("Copilot disable")
+			local line = vim.fn.line(".")
+			if line < 1 or line > #qf_list then
+				return
+			end
+
+			table.remove(qf_list, line)
+
+			-- 'r' substitui a lista atual pela nova modificada
+			vim.fn.setqflist(qf_list, "r")
+
+			-- Restaura a posição do cursor (opcional, mas bom para UX)
+			vim.cmd(tostring(line))
+		end
+
+		vim.keymap.set("n", "dd", remove_qf_item, { buffer = true, desc = "Remove item do Quickfix" })
+		vim.keymap.set("v", "d", remove_qf_item, { buffer = true, desc = "Remove item do Quickfix" })
+	end,
+})
+
+local function set_transparent()
+    local groups = {
+        "Normal", "NormalNC", "EndOfBuffer", "NormalFloat",
+        "FloatBorder", "SignColumn", "StatusLine", "StatusLineNC",
+        "TabLine", "TabLineFill", "TabLineSel",
+    }
+    for _, g in ipairs(groups) do
+        vim.api.nvim_set_hl(0, g, { bg = "none" })
+    end
+end
+
+set_transparent()
